@@ -41,13 +41,98 @@ class Sorter {
     //   });
     // });
 
+
+/*
     let cut = indices.map((index) => {
       return parseInt(this.values.filter((value, n) => {
         return (index === n);
       }));
-    }).sort();
+    });
+    let sorted = cut.sort();
 
-    
+
+
+    this.values.map((value, n) => {
+      if (n === sorted[indices]) {}
+      return
+    });
+*/
+
+// this.values = [4,3,2,1]
+// indices = [1,2]
+
+let filtered = indices.map((index) => {
+    return parseInt(this.values.filter((value, n) => {
+      return (index === n);
+  }));
+});
+console.log('filtered: ', filtered); // [3,2]
+let sorted = filtered.sort();
+console.log('sorted: ', sorted); // [2,3]
+let injected = this.values.map((value, n) => {
+  return sorted.filter((element, i) => {
+    return (n === indices[n]);
+  });
+});
+
+
+
+
+
+
+
+// 1) Имеется массив this.values = [7,6,5];
+// 2) Есть массив индексов indices = [1,2];
+// 3) Получаем массив чисел, которые необходимо отсортировать cut = [6,5];
+// 4) Сортируем выбранный массив sorted = [5,6];
+// 5) sorted[indices]
+//
+//
+
+
+    // let cut = indices.map((index) => {
+    //   return parseInt(this.values.map((value, n) => {
+    //     return (index === n) ? ;
+    //   }));
+    // }).sort();
+    //
+    // this.values.map((value, n) => {
+    //   return indices
+    // });
+//
+//
+//
+//
+//
+
+
+//    this.values.map((value, n) => {
+//      return indices.forEach((index) => {
+//        return ()
+//      });
+//    });
+
+    // let sorted = [];
+    // for (var n = 0; n < this.values.length; n++) {
+    //    for (var index = 0; index < indices.length; index++) {
+    //     if (n === indices[n]) {
+    //       sorted.push(cut[n]);
+    //       console.log('if n === indices[n] ', cut[n]);
+    //     } else {
+    //       sorted.push(this.values[n]);
+    //       console.log('if n !== indices[n] ', this.values[n]);
+    //     }
+    //   }
+    // }
+
+
+    // values = [7,6,5]
+    // indices = [1,2]
+    // cut = [5,6]
+    // sorted = [7,5,6]
+
+
+
 
 
     // let cut = [];
@@ -59,7 +144,9 @@ class Sorter {
     //   }
     // }
 
-    console.log('cut: ', cut);
+    // console.log('cut: ', cut);
+    // console.log('sorted: ', sorted);
+
 //  1) имеем массив this.values
 //  2)
 
@@ -72,12 +159,15 @@ class Sorter {
 }
 //
 let sorter = new Sorter();
-sorter.add(7);
-sorter.add(6);
-sorter.add(5);
-sorter.sort([1,2]);
+sorter.add(4);
+sorter.add(3);
+sorter.add(2);
+sorter.add(1);
 console.log('toArray: ', sorter.toArray());
-
+let indices = [1,2];
+console.log('indices: ', indices);
+sorter.sort(indices);
+console.log('injected: ', injected);
 
 
 
