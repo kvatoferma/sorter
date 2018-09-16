@@ -61,24 +61,33 @@ class Sorter {
 // this.values = [4,3,2,1]
 // indices = [1,2]
 
-let filtered = indices.map((index) => {
-    return parseInt(this.values.filter((value, n) => {
-      return (index === n);
-  }));
+// let filtered = indices.map((index) => {
+//     return parseInt(this.values.filter((value, n) => {
+//       return (index === n);
+//   }));
+// });
+// console.log('filtered: ', filtered); // [3,2]
+// let sorted = filtered.sort();
+// console.log('sorted: ', sorted); // [2,3]
+// let injected = this.values.map((value, n) => {
+//   return sorted.filter((element, i) => {
+//     return (n === indices[n]);
+//   });
+// });
+
+let filtered = indices.map(index => {
+  return this.values[index];
 });
-console.log('filtered: ', filtered); // [3,2]
+// console.log('filtered: ', filtered);
 let sorted = filtered.sort();
-console.log('sorted: ', sorted); // [2,3]
-let injected = this.values.map((value, n) => {
-  return sorted.filter((element, i) => {
-    return (n === indices[n]);
-  });
+// console.log('sorted: ', sorted);
+indices.forEach((index, i) => {
+  this.values.splice(index, 1, sorted[i]);
 });
+// console.log('returned: ', sorter.toArray());
 
 
-
-
-
+//
 
 
 // 1) Имеется массив this.values = [7,6,5];
@@ -154,21 +163,20 @@ let injected = this.values.map((value, n) => {
   }
 
   setComparator(compareFunction) {
-    // your implementation
+     
   }
 }
 //
-let sorter = new Sorter();
-sorter.add(4);
-sorter.add(3);
-sorter.add(2);
-sorter.add(1);
-console.log('toArray: ', sorter.toArray());
-let indices = [1,2];
-console.log('indices: ', indices);
-sorter.sort(indices);
-console.log('injected: ', injected);
+// let sorter = new Sorter();
+// sorter.add(4);
+// sorter.add(3);
+// sorter.add(2);
+// sorter.add(1);
+// console.log('toArray: ', sorter.toArray());
+// let indices = [1,2];
+// console.log('indices: ', indices);
+// sorter.sort(indices);
 
 
 
-// module.exports = Sorter;
+module.exports = Sorter;
