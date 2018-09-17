@@ -20,38 +20,44 @@ class Sorter {
   }
 
   sort(indices) {
+    indices.sort(this.compareNumeric);
     let filtered = indices.map(index => {
       return this.values[index];
     });
-//  console.log('filtered: ', filtered);
-    let sorted = filtered.sort();
-// console.log('sorted: ', sorted);
+    let sorted = filtered.sort(this.setComparator());
     indices.forEach((index, i) => {
       this.values.splice(index, 1, sorted[i]);
     });
-// console.log('returned: ', sorter.toArray());
   }
 
-  setComparator(compareFunction = this.defaultComparator) {
+  setComparator(compareFunction = this.compareNumeric) {
     return compareFunction;
   }
 
-  defaultComparator(a, b) {
-    return (a !== b) ? ((a < b) ? -1 : 1) : 0;
+  compareNumeric(a, b) {
+    return (a < b) ? -1 : 1;
   }
 
 }
-//
-// let sorter = new Sorter();
-// sorter.add(4);
-// sorter.add(3);
-// sorter.add(2);
-// sorter.add(1);
-// console.log('toArray: ', sorter.toArray());
-// let indices = [1,2];
-// console.log('indices: ', indices);
-// sorter.sort(indices);
-
-
-
 module.exports = Sorter;
+
+
+// const AGE_COMPARATOR = (left, right) => left.age - right.age;
+// const REVERSE_COMPARATOR = (left, right) => right - left;
+// const STRINGIFY_COMPARATOR = (left, right) => JSON.stringify(left, null, 2).length - JSON.stringify(right, null, 2).length;
+// let sorter = new Sorter();
+
+
+// sorter.add({ age: 20 });
+// sorter.add({ age: 18 });
+// sorter.add({ age: 16 });
+
+// sorter.setComparator(AGE_COMPARATOR);
+// console.log('sorter.toArray: ', sorter.toArray());
+// sorter.sort([0, 1]);
+
+
+// console.log('sorter.toArray: ', sorter.toArray());
+// console.log('typeof sorter.setComparator: ', typeof sorter.setComparator);
+// sorter.setComparator();
+// sorter.setComparator(AGE_COMPARATOR);
