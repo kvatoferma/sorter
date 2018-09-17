@@ -20,7 +20,7 @@ class Sorter {
   }
 
   sort(indices) {
-    indices.sort(this.compareNumeric);
+    indices.sort();
     let filtered = indices.map(index => {
       return this.values[index];
     });
@@ -35,7 +35,7 @@ class Sorter {
   }
 
   compareNumeric(a, b) {
-    return (a < b) ? -1 : 1;
+    return (a !== b) ? ((a < b) ? -1 : 1) : 0;
   }
 
 }
